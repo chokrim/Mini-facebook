@@ -165,10 +165,9 @@ class Connexion
 
         $requete_prepare = $this->connexion->prepare(
 
-            "SELECT * FROM Personne WHERE nom like :nom OR Prenom like :prenom"
-        );
+            "SELECT * FROM Personne WHERE LOWER (nom) like LOWER (:nom) OR LOWER (Prenom) like LOWER (:prenom)");
 
-        $requete_prepare->execute(array("nom" => "%$pattern%", "prenom" => "%$pattern%"));
+        $requete_prepare->execute(array("nom"=>"%$pattern%", "prenom"=>"%$pattern%"));
 
         $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
 

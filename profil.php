@@ -4,6 +4,7 @@ $apliBD = new Connexion;
 
 $personne = $apliBD->selectPersonneById($_GET["id"]);
 
+$recherches = $apliBD->selectPersonneByNomPrenomLike($_GET["id"]);
  
 ?>
 
@@ -21,21 +22,28 @@ $personne = $apliBD->selectPersonneById($_GET["id"]);
 
 <body>
 <div>
-    <form action="">
-$recherches = $apliBD->selectPersonneByNomPrenomLike($_GET[""]);
+    <form action="recherche.php">
+
     <input type="text" placeholder="Search.." name="search">
     <button type=‘submit‘>Q</button>
  </form>   
 </div>
    
-
-    <img class="imgprofil" src="https://image.flaticon.com/icons/png/512/26/26444.png" alt="">
+ <?php
+    echo '<img class="imgprofil" src="'.$personne->URL_Photo.'" alt="">';
     
    
   
-<?php
-'<h3><span class="prenom">' . $personne->Prenom . '</span><span class="prenom">' . $personne->Nom . '</span></h3>';
+
+ echo '<h3><span class="prenom">' . $personne->Prenom . '</span><span class="prenom">' . $personne->Nom . '</span></h3>';
+
+            
+                echo'<td class="Rprofile" >  
+                    <a href="profil.php?id='.$personne->ID.'" type="submit" class="face" value="">'.$personne->Prenom.'</a></td>';
+                
+            
 ?>
+
     <div class="birth">29/10/1998</div>
     <div class="statut">Celibataire</div>
 

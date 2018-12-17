@@ -1,8 +1,13 @@
 <?php
 require 'connexion2.php';
-$apliBD = new Connexion;
+$appliDB = new Connexion;
 
-$personnes=$apliBD->selectPersonnes();
+$personnes = $appliDB->selectPersonnes();
+$pattern = "";
+if (isset($_GET["pageDeRecherches"])) {
+    $pattern = $_GET["pageDeRecherches"];
+}
+$personnes = $appliDB->selectPersonneByNomPrenomLike($pattern)
 
 ?>
 <html lang="en">
@@ -27,7 +32,7 @@ $personnes=$apliBD->selectPersonnes();
         </div>
     </a>
     <form>
-        <input class="Search" type="text" name="page de recherches" placeholder="blop">
+        <input class="Search" type="text" name="pageDeRecherches" placeholder="blop">
         <input type="submit" value="Search">
     </form>
       
@@ -36,15 +41,20 @@ $personnes=$apliBD->selectPersonnes();
     <table> 
         <tr>
             <?php
-            foreach($personnes as $personne){
-                echo'<td class="Rprofile" > <img src="images/mfr1.jpeg" class="imgprofil2" />
-                    <a href="profil.php?id='.$personne->ID.'" type="submit" class="face" value="">'.$personne->Prenom.'</a></td>';
-                
+            foreach ($personnes as $value) {
+                echo '<a href="profil.php?id=' . $value->ID . '">';
+                echo '<td class="Rprofile" ></td>';
+                echo '<img class="imgprofil2" src="' . $value->URL_Photo . '">';
+                echo '<td class="face">' . $value->Prenom . " " . '</td>';
+                echo '<td class="face">' . " " . $value->Nom . '</td>';
+                echo '</a>';
             }
             ?>
+        </tr> 
+
             
             <img src=" images/photographie-de-classe-emoji-font-face-90342627.jpg" class="imgamis4" />
-        </tr>   
+           
                
                 
             
