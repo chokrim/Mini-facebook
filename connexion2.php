@@ -96,7 +96,7 @@ class Connexion
 
 
         $requete_prepare = $this->connexion->prepare(
-            "SELECT Type FROM Hobby"
+            "SELECT id, Type FROM Hobby"
         );
         $requete_prepare->execute();
 
@@ -126,10 +126,11 @@ class Connexion
 
     }
        //exercice 10
-    public function selectPersonnes(){
+    public function selectPersonnes()
+    {
 
         $requete_prepare = $this->connexion->prepare("SELECT * FROM Personne ");
-        $requete_prepare->execute ();
+        $requete_prepare->execute();
         $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
 
         return $resultat;
@@ -230,8 +231,8 @@ class Connexion
         // executer la requete pour chaque hobbyId
         foreach ($HobbyIds as $hobbie) {
 
-            $requete_prepare->execute(array("personne_id" => $personneId,"hobby_id"=>$hobbie));
-             
+            $requete_prepare->execute(array("personne_id" => $personneId, "hobby_id" => $hobbie));
+
 
         }
 
@@ -249,14 +250,14 @@ class Connexion
         // executer la requete pour chaque musiqueId
         foreach ($MusiquesIds as $musique) {
 
-            $requete_prepare->execute(array("personne_id" => $personneId,"musique_id"=>$musique));
-             
+            $requete_prepare->execute(array("personne_id" => $personneId, "musique_id" => $musique));
+
 
         }
 
     }
 
-    public function insertPersonneRelation($personneId, $RelationsIds,$Type)
+    public function insertPersonneRelation($personneId, $RelationsIds, $Type)
     {
 
 
@@ -266,18 +267,18 @@ class Connexion
         );
 
 
-            $requete_prepare->execute (array("personne_id" => $personneId,"relation_id"=>$RelationsIds,"type"=>$Type));
-             
+        $requete_prepare->execute(array("personne_id" => $personneId, "relation_id" => $RelationsIds, "type" => $Type));
 
-        
+
+
     }
 
-     
 
 
 
 
-    
+
+
 
 
 
