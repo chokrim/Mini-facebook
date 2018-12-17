@@ -6,36 +6,47 @@ require 'connexion2.php';
 
 function inscription()
 {
-    $nom = $_POST["nom"];
+    $Nom = $_POST["nom"];
 
-    $prenom = $_POST["prenom"];
+    $Prenom = $_POST["prenom"];
 
-    $url_photo = $_POST["url_photok"];
+    $url_photo = $_POST["url_photo"];
 
     $date_naissance = $_POST["date_naissance"];
 
     $status_couple = $_POST["Status"];
 
-    $hobbys = $_POST["hobbies"];
+    $hobbies = $_POST["hobbies"];
 
-    $music = $_POST["musiques"];
+    $musiques = $_POST["musiques"];
+
 
     $message = $_POST["message"];
 
 
-    echo $nom . ' ' . $prenom . ' ' . $url_photo . ' ' . $date_naissance . ' ' . $status_couple . ' ' . $message;
-    foreach ($hobbys as $hobby){
-        echo $hobby.'<br/>';
+    echo $Nom . ' ' . $Prenom . ' ' . $url_photo . ' ' . $date_naissance . ' ' . $status_couple . ' ' . $message;
+    foreach ($hobbies as $hobby) {
+        echo $hobby . '<br/>';
     }
 
     $appliDB = new Connexion;
-    $idPersonne = $appliDB->insertPersonne($nom, $prenom, $url_photo, $date_naissance, $status_couple);
+    $id = $appliDB->insertPersonne($Nom, $Prenom, $url_photo, $date_naissance, $status_couple);
+    
+    //hooby
+    
+    $appliDB->insertPersonneHobbies($id, $hobbies);
 
-// hooby
-    $hobbyIds = $_POST["hobbies"];
+// //musiquec
+ var_dump($musiques);
+   
+    $appliDB->insertPersonneMusiques($id, $musiques);
+
+
+// //relation
+
+// $appliDB->insertPersonneRelation();
 
 }
-
 
 
 inscription();

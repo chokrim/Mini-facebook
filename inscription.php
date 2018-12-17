@@ -8,20 +8,10 @@
     <link rel="stylesheet" href="style.css">
 
     <?php
+    require('connexion2.php');
 
-    if (isset($_POST['envoyer'])) {
-
-        if (isset($_POST['nom'], $_POST['prenom'], $_POST['message'])) {
-
-
-            extract($_POST);
-
-            echo $nom . " " . $prenom . " " . $message;
-        }
-
-
-    }
-    require('connexion.php');
+    $appDB = new Connexion();
+   
 
     ?>
     <title>Minifacebook : inscription</title>
@@ -75,7 +65,7 @@
             <h4>Hobbies</h4>
             <div>
                 <?php
-                $result = selectAllHobbies();
+                $result = $appDB->selectAllHobbies();
                 foreach ($result as $hobby) {
                     echo '<label><input type="checkbox" name="hobbies[]" value="'. $hobby->id .'">' . $hobby->Type . '</label>';
                 }
@@ -91,9 +81,9 @@
 
             <div>
                 <?php
-                $result = selectAllMusique();
+                $result = $appDB->selectAllMusique();
                 foreach ($result as $musique) {
-                    echo '<label><input type="checkbox" name="musiques" value="' . $musique->id . '">' . $musique->Type . '</label>';
+                    echo '<label><input type="checkbox" name="musiques[]" value="' . $musique->id . '">' . $musique->Type . '</label>';
                 }
                 ?>
             </div>
@@ -102,8 +92,7 @@
             <hr>
 
             <h3> A quoi ressembles-tu?</h3>
-            <input class="telecharge" type="text" name="url_photok">
-            <input type="submit" value="telecharger">
+            <input class="telecharge" type="url" name="url_photo">
 
             <hr>    
 
