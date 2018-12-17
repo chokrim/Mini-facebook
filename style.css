@@ -1,0 +1,127 @@
+body{
+    background: linear-gradient( to left,rgb(31, 147, 173), rgb(243, 102, 201));
+}
+
+ 
+td {
+   width: 60px;
+   text-align: center;
+ 
+
+} 
+.imgprofil {
+    width: 100px;
+
+
+}
+/* rechercher page recherche*/
+ 
+
+/*photos profil ami famille collegue*/
+.imgprofil1 {
+    margin-left: auto;
+    height: 100px;
+    width: 100px;
+    
+}
+ /* text nom profil recherche*/
+
+.imgprofil2{ 
+    margin-left: auto;
+    height: 50px;
+    width: 50px;
+ 
+}
+
+.Rprofile {
+    height: 200px;
+    width: 200px;
+    
+}
+
+
+.imgInscription{
+    margin-left: auto;
+    height: 50px;
+    width: 50px;
+}
+#mus1{
+    display:inline-block
+}
+#mus2{
+    display:inline-block
+    
+}
+/* rechercher page profil */
+
+
+.chercher{
+
+margin-left: 200px;
+
+}
+a{
+   color: antiquewhite; 
+}
+.prenom{
+   color: antiquewhite;
+   font-style: italic;
+   font-size: 30px;
+}
+/* page profil */
+h1{
+    text-shadow: 2px 2px 50px rgb(0,0,0);
+    text-decoration: underline;
+    text-align: center;
+    color: blanchedalmond;
+    font-size: 30px;
+    font-style: italic;
+}
+/*page Inscription*/
+h3{
+    color: antiquewhite;
+    font-style: normal;
+}
+.button {
+    background-color:rgb(250, 250, 250);
+    height:50px;
+    width:150px;
+    border-radius:25px;
+    color: black;
+  /* line-height:-15px; */
+    text-align: center;
+    text-decoration: none;
+    
+    font-size: 20px;
+
+    cursor: pointer;
+    float:right;
+}
+.button p{
+    margin-top:7px;
+
+}
+.birth{
+    font-size: 20px;
+}
+.statut{
+   font-size: 18px;
+}
+
+#Hobbies{
+    display:inline-block
+}
+
+#hobbies2{
+    display: inline-block
+}
+
+.imgamis4{
+	border-radius: 200%;
+    border: 5px dotted #eca712;
+    filter: drop-shadow(16px 16px 20px red);    display: block;
+      
+    height: 50%;
+    float: left; 
+    margin-right:1px;
+}
