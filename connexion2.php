@@ -9,9 +9,9 @@ class Connexion
 
         $PARAM_hote = 'localhost';
         $PARAM_port = '3306';
-        $PARAM_nom_bd = 'adminMiniFacebook';
+        $PARAM_nom_bd = 'minifacebook';
         $PARAM_utilisateur = 'adminMiniFacebook';
-        $PARAM_mot_passe = 'digital2018';
+        $PARAM_mot_passe = 'minifacebook';
 
         try {
             $this->connexion = new PDO(
