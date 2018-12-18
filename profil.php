@@ -1,14 +1,14 @@
 <?php 
 require 'connexion2.php';
-$apliBD = new Connexion;
+$appliDB = new Connexion;
 
-$personne = $apliBD->selectPersonneById($_GET["id"]);
 
-$recherches = $apliBD->selectPersonneByNomPrenomLike($_GET["id"]);
- 
-?>
+    $personne = $appliDB->selectPersonneById($_GET["id"]);
+    $musiques = $appliDB-> getPersonneMusique($_GET["id"]);
+    ?>
 
-<!Doctype <!DOCTYPE html>
+<!DOCTYPE html>
+
 <html>
 
 <head>
@@ -28,27 +28,27 @@ $recherches = $apliBD->selectPersonneByNomPrenomLike($_GET["id"]);
     <button type=‘submit‘>Q</button>
  </form>   
 </div>
-   
- <?php
-    echo '<img class="imgprofil" src="'.$personne->URL_Photo.'" alt="">';
     
-   
-  
 
- echo '<h3><span class="prenom">' . $personne->Prenom . '</span><span class="prenom">' . $personne->Nom . '</span></h3>';
+   <?php
+   echo '<img class="imgprofil" src="' . $personne->URL_Photo . '" alt="photo profil">
 
-            
-                echo'<td class="Rprofile" >  
-                    <a href="profil.php?id='.$personne->ID.'" type="submit" class="face" value="">'.$personne->Prenom.'</a></td>';
-                
-            
+      <span class="prenom">' . $personne->Date_Naissance . '</span>
+
+      <span class="Status">' . $personne->Status_couple . '</span>
+
+      <span class="musique">' . $personne->Musique . '</span>';?> 
+<h3>
+ <?php
+echo '<span class="prenom">' . $personne->Prenom . '</span>          <span class="prenom">' . $personne->Nom . '</span>';
 ?>
-
-    <div class="birth">29/10/1998</div>
-    <div class="statut">Celibataire</div>
-
+ </h3>
+ 
+                
+    
+<!-- 
     <hr>
-    <h1>Ce que Diane aime</h1>
+    <h1>Ce qu'aime</h1>
     <h2>Musique:</h2>
 
     <div id="mus1">
@@ -83,8 +83,8 @@ $recherches = $apliBD->selectPersonneByNomPrenomLike($_GET["id"]);
                 <li>Velo</li>
             </ul>
 
-        </div>
-        <hr>
+        </div> -->
+        
         <h2>Reseaux:</h2>
         <table>
             <tr>
@@ -103,21 +103,7 @@ $recherches = $apliBD->selectPersonneByNomPrenomLike($_GET["id"]);
                 <td><a href="#" type="submit" class="faceProfil" value="">Maurice Robert (Famille)</a></td>
                 <td><a href="#" type="submit" class="faceProfil" value="">Alice Porter (Amie)</a></td>
                 <td><a href="#" type="submit" class="faceProfil" value="">Stephan Dimario (Collegue)</a></td>
-
-
             </tr>
-
         </table>
-
-
-
-
-
-
-
-
-
-
 </body>
-
 </html>
