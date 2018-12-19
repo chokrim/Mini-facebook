@@ -5,6 +5,8 @@ $appliDB = new Connexion;
 
     $personne = $appliDB->selectPersonneById($_GET["id"]);
     $musiques = $appliDB-> getPersonneMusique($_GET["id"]);
+    $hobbys = $appliDB -> getPersonneHobby($_GET ["id"]);
+    $reseau = $appliDB -> getRelationPersonne($_GET ["id"]);
     ?>
 
 <!DOCTYPE html>
@@ -35,58 +37,80 @@ $appliDB = new Connexion;
 
       <span class="prenom">' . $personne->Date_Naissance . '</span>
 
-      <span class="Status">' . $personne->Status_couple . '</span>
+      <span class="Status">' . $personne->Status_couple . '</span>';?>
 
-      <span class="musique">' . $personne->Musique . '</span>';?> 
 <h3>
  <?php
 echo '<span class="prenom">' . $personne->Prenom . '</span>          <span class="prenom">' . $personne->Nom . '</span>';
 ?>
  </h3>
  
-                
-    
-<!-- 
+        
     <hr>
-    <h1>Ce qu'aime</h1>
+    <h1>J'aime ecouté(e)</h1>
     <h2>Musique:</h2>
 
-    <div id="mus1">
-        <ul>
-            <li>Rap</li>
-            <li>Reggae</li>
-            <li>Pop</li>
-        </ul>
-    </div>
-    <div id="mus2">
-        <ul>
-            <li>Electro</li>
-            <li>RndB</li>
-            <li>Country</li>
-        </ul>
-    </div>
+<div id="mus1">
+<?php
+
+   echo  "<ul>";
+   foreach ($musiques as $value){
+         echo "<li>".$value->Type."</li>";
+   }
+   echo '</ul>';
+
+ ?>
+
+</div>
 
 
+   <hr>
+   <h1>J'aime pratiqué(e)</h1>
     <h2>Hobbies:</h2>
 
-    <div id="Hobbies">
-        <ul>
-            <li>equitation</li>
-            <li>escalade</li>
-            <li>photographie</li>
-        </ul>
-    </div>
-        <div id="hobbies2">
-            <ul>
-                <li>randoné</li>
-                <li>Dessin</li>
-                <li>Velo</li>
-            </ul>
 
-        </div> -->
-        
+
+    <div id="Hobbies">
+
+ <?php
+
+     echo '<ul>';
+     foreach ( $hobbys as $value){
+            echo "<li>".$value->Type."</li>";
+
+    }
+    echo '</ul>' ;
+
+ ?>   
+            
+
+    </div> 
+    <hr>
+        <h1>Je connais</h1>
         <h2>Reseaux:</h2>
-        <table>
+
+        <div id="Reseau">
+
+<?php
+
+    echo '<ul>';
+    foreach ( $reseau as $value){
+        echo '<a href="profil.php?id="'.$value->ID.'">';
+           echo '<img src="'.$value->URL_Photo.'">';
+        echo '<p>'.$value->Prenom." ".$value->Nom.'<br></p>';
+        echo '</a>';
+
+   }
+  
+
+?>   
+           
+
+   </div> 
+
+
+  
+        <!-- <table>
             <tr>
                 <td class="tdprofile"> <img src="images/mfpapa.jpg" class="imgprofil1" /></td>
                 <td class="tdprofile"><img src="images/mfAmiee.jpeg" class="imgprofil1" /></td>
@@ -104,6 +128,6 @@ echo '<span class="prenom">' . $personne->Prenom . '</span>          <span class
                 <td><a href="#" type="submit" class="faceProfil" value="">Alice Porter (Amie)</a></td>
                 <td><a href="#" type="submit" class="faceProfil" value="">Stephan Dimario (Collegue)</a></td>
             </tr>
-        </table>
+        </table> -->
 </body>
 </html>
