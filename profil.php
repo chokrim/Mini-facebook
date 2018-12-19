@@ -28,9 +28,10 @@ $appliDB = new Connexion;
 
     <input type="text" placeholder="Search.." name="search">
     <button type=‘submit‘>Q</button>
+    
  </form>   
 </div>
-    
+    <br>
 
    <?php
    echo '<img class="imgprofil" src="' . $personne->URL_Photo . '" alt="photo profil">
@@ -47,7 +48,7 @@ echo '<span class="prenom">' . $personne->Prenom . '</span>          <span class
  
         
     <hr>
-    <h1>J'aime ecouté(e)</h1>
+    <h1>J'aime ecouter</h1>
     <h2>Musique:</h2>
 
 <div id="mus1">
