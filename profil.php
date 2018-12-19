@@ -65,7 +65,7 @@ echo '<span class="prenom">' . $personne->Prenom . '</span>          <span class
 
 
    <hr>
-   <h1>J'aime pratiqué(e)</h1>
+   <h1>J'aime faire et aller</h1>
     <h2>Hobbies:</h2>
 
 
@@ -92,7 +92,6 @@ echo '<span class="prenom">' . $personne->Prenom . '</span>          <span class
         <div id="Reseau">
 
 <?php
-
     echo '<ul>';
     foreach ( $reseau as $value){
         echo '<a href="profil.php?id="'.$value->ID.'">';
