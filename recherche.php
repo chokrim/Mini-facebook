@@ -41,28 +41,30 @@ $personnes = $appliDB->selectPersonneByNomPrenomLike($pattern)
 
      
      <div class="Rprofile" >
-         <table border width =40% id=table>
+        
 
+            
           <?php foreach ($personnes as $value) {
-                echo '<tr>';
-                echo '<td>';
+                
+                echo '<div class="flex-class">';
                 echo '<img class="imgprofil2" src="' . $value->URL_Photo . '">';
-                echo '</td>';
-                echo '<td>';
                 echo '<a href="profil.php?id=' . $value->ID . '">';
                 echo '<p>' . $value->Prenom . " " . $value->Nom . '</p>';
-                echo '</td>';
-                echo '</tr>';
                 echo '</a>';
+                echo '</div>';
+
+            
+            
 
             }
             ?>
-                     </table>;
+            
+       
         </div> 
 
             
-           <!-- <img src=" images/photographie-de-classe-emoji-font-face-90342627.jpg" class="imgamis4" />
-           
+           <img src=" images/photographie-de-classe-emoji-font-face-90342627.jpg" class="imgamis4" />
+           <!-- 
              <table>
             <tr>
                 <td class="imgrecherche"> <img url="http://roxanaconstantinescu.com/roxana/wp-content/uploads/2015/10/roxana-constantinescu-about2.jpg" class="imgrecherhce" /></td>
