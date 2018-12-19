@@ -28,12 +28,13 @@ td {
 
 .imgprofil2{ 
     margin-left: auto;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width:100 px;
  
 }
 
 .Rprofile {
+    margin-left: 650px;
     height: 200px;
     width: 200px;
     
@@ -125,3 +126,7 @@ h3{
     float: left; 
     margin-right:1px;
 }
+ {
+    width: 60px;
+    text-align: center;
+  
