@@ -35,35 +35,26 @@ $personnes = $appliDB->selectPersonneByNomPrenomLike($pattern)
         <input class="Search" type="text" name="pageDeRecherches" placeholder="blop">
         <input type="submit" value="Search">
     </form>
-      
-    
-
-
      
-     <div class="Rprofile" >
-        
 
-            
-          <?php foreach ($personnes as $value) {
-                
-                echo '<div class="flex-class">';
+        <div class="Rprofile" >
+            <?php
+            foreach ($personnes as $value) {
+                echo '<ul>';
                 echo '<img class="imgprofil2" src="' . $value->URL_Photo . '">';
+              
                 echo '<a href="profil.php?id=' . $value->ID . '">';
-                echo '<p>' . $value->Prenom . " " . $value->Nom . '</p>';
+                echo '<div class="face">' . $value->Prenom . " " . $value->Nom.'</div>';
                 echo '</a>';
-                echo '</div>';
-
-            
-            
-
+                echo '</ul>';
+                
             }
             ?>
-            
-       
-        </div> 
+        </div> 
 
             
            <img src=" images/photographie-de-classe-emoji-font-face-90342627.jpg" class="imgamis4" />
            
+            
 </body>
 </html>

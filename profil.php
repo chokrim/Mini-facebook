@@ -44,6 +44,13 @@ $appliDB = new Connexion;
  <?php
 echo '<span class="prenom">' . $personne->Prenom . '</span>          <span class="prenom">' . $personne->Nom . '</span>';
 ?>
+
+
+<?php
+echo '<span class="prenom">' . $personne->Prenom . '</span>';      
+?>
+
+
  </h3>
  
         
@@ -96,7 +103,7 @@ echo '<span class="prenom">' . $personne->Prenom . '</span>          <span class
     echo '<ul>';
     foreach ( $reseau as $value){
         echo '<a href="profil.php?id="'.$value->ID.'">';
-           echo '<img src="'.$value->URL_Photo.'">';
+        echo '<img src="'.$value->URL_Photo.'" width=20% height=100em>';
         echo '<p>'.$value->Prenom." ".$value->Nom.'<br></p>';
         echo '</a>';
 

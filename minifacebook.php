@@ -23,6 +23,8 @@ function inscription()
 
     $message = $_POST["message"];
 
+    $relationids=$_POST["personnes"];
+    var_dump($_POST);
 
     echo $Nom . ' ' . $Prenom . ' ' . $url_photo . ' ' . $date_naissance . ' ' . $status_couple . ' ' . $message;
     foreach ($hobbies as $hobby) {
@@ -37,14 +39,16 @@ function inscription()
     $appliDB->insertPersonneHobbies($id, $hobbies);
 
 // //musiquec
- var_dump($musiques);
+//  var_dump($musiques);
    
-    $appliDB->insertPersonneMusiques($id, $musiques);
+    $appliDB->insertPersonneMusique($id, $musiques);
 
 
 // //relation
-
-// $appliDB->insertPersonneRelation();
+// foreach($relationids as $relation){
+//     $appliDB->insertPersonneRelation($id,$relation,);
+// }
+    
 
 }
 

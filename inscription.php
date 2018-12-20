@@ -10,7 +10,7 @@
     <?php
     require('connexion2.php');
 
-    $appDB = new Connexion();
+    $appliDB = new Connexion();
    
 
     ?>
@@ -65,7 +65,7 @@
             <h4>Hobbies</h4>
             <div>
                 <?php
-                $result = $appDB->selectAllHobbies();
+                $result = $appliDB->selectAllHobbies();
                 foreach ($result as $hobby) {
                     echo '<label><input type="checkbox" name="hobbies[]" value="'. $hobby->id .'">' . $hobby->Type . '</label>';
                 }
@@ -81,7 +81,7 @@
 
             <div>
                 <?php
-                $result = $appDB->selectAllMusique();
+                $result = $appliDB->selectAllMusique();
                 foreach ($result as $musique) {
                     echo '<label><input type="checkbox" name="musiques[]" value="' . $musique->id . '">' . $musique->Type . '</label>';
                 }
@@ -97,15 +97,41 @@
             <hr>    
 
             <h3>Tu les connais?</h3>
-            <table>
-                <tr>
+            <div>
+
+
+                <?php
+                $friends = $appliDB->selectPersonnes();
+            
+                // $friends = $appliDB->getRelationPersonneAll($personnes);
+                 
+                foreach ($friends as $friend) {
+                    echo '<table width=45% id="table" >';
+                    echo '<td><img src="'.$friend->URL_Photo.'" width=20% height=100em><input type="checkbox" name="personnes[]" value="' . $friend->ID . '">' . $friend->Nom . " ".$friend->Prenom.'</input></td>';
+                    echo '<td align=right>';
+                    echo "<select id=box name='$friend->ID'>";
+                    echo '<option label="famille" value="famille">famille</option>';
+                    echo '<option label="amis" value="amis">amis</option>';
+                    echo '<option label="collegue" value="collegue">collegue</option>';
+                    echo '<option label="inconnu" value="inconnu">inconnu</option>';
+                    echo '<option label="marié" value="marié">marié</option>';
+                    echo '</select>';
+                    echo '</td>';
+                    echo '</table>';
+                }   
+                ?>
+            </div>
+
+
+           
+                <!-- <tr>
                     <td class="connaissance"></td> <input type="radio" name="resau" value="famille"required="required"> Famille
                     <td class="connaissance"></td> <input type="radio" name="resau" value="amis"required="required"> Amis
                     <td class="connaissance"></td> <input type="radio" name="resau" value="collegues"required="required"> Collegues
-                    <td class="connaissance"></td> <input type="radio" name="resau" value="inconnu"required="required"> Inconnu
+                    <td class="connaissance"></td> <input type="radio" name="resau" value="inconnu"required="required"> Inconnu -->
 
-                    <img  src="images/mfstephane.jpg" class="imgInscription" />
-                     <a href="profil.html" type="submit" class="face" value="">Stephan Dimario</a>
+                    <!-- <img  src="images/mfstephane.jpg" class="imgInscription" />
+                     <a href="profil.html" type="submit" class="face" value="">Stephan Dimario</a> -->
 
                      <br>
                      <br>

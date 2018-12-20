@@ -11,7 +11,7 @@ class Connexion
         $PARAM_port = '3306';
         $PARAM_nom_bd = 'minifacebook';
         $PARAM_utilisateur = 'adminMiniFacebook';
-        $PARAM_mot_passe = 'minifacebook';
+        $PARAM_mot_passe = 'digital2018';
 
         try {
             $this->connexion = new PDO(
@@ -80,7 +80,7 @@ class Connexion
             $requete_prepare->execute(
                 array('nom' => $nom, 'prenom' => $prenom, 'url_photo' => $url_photo, 'date_naissance' => $date_naissance, 'status_couple' => $status_couple)
             );
-            var_dump($requete_prepare->errorInfo());
+
             $id = $this->connexion->lastInsertId();
         } catch (Exception $e) {
             $id = null;
@@ -176,6 +176,26 @@ class Connexion
 
     }
 
+    // fonction pour avoir la musique affiche 
+
+    public function selectPersonneByMusique($id)
+    {
+
+
+
+        $requete_prepare = $this->connexion->prepare(
+
+            "SELECT * FROM Personne WHERE LOWER (nom) like LOWER (:nom) OR LOWER (Prenom) like LOWER (:prenom)");
+
+        $requete_prepare->execute(array("nom"=>"%$pattern%", "prenom"=>"%$pattern%"));
+
+        $resultat = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+
+        return $resultat;
+
+    }
+
+
     // exercice 6 ( relation one to many)
 
     public function getPersonneHobby($personneId)
@@ -202,19 +222,37 @@ class Connexion
 
         return $musique;
     }
-    public function getRelationPersonne($personneId)
+    public function getRelationPersonneAll($relationId )
     {
         $requete_prepare = $this->connexion->prepare(
-            "SELECT Nom, Prenom,Type from RelationPersonne rp
-            INNER JOIN Personne p ON rp.Relation_Id = p.Id
-            WHERE rp.Personne_Id= :id"
-        );
-        $requete_prepare->execute(array("id" => $personneId));
-        $personneId = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
-        return $personneId;
+             "SELECT * Type from RelationPersonne rp
+              INNER JOIN Personne p ON rp.Relation_Id = p.Id
+              WHERE rp.Personne_Id= :id");
+
+
+
+        
+        $requete_prepare->execute(array("id" => $relationId));
+        $relationpersonne = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+        return $relationpersonne;
     }
 
+    public function getRelationPersonne($relationId )
+    {
+        $requete_prepare = $this->connexion->prepare(
 
+              "SELECT P2.ID, P2.Nom, P2.Prenom, P2.URL_Photo, RP.Type FROM Personne P2, RelationPersonne RP
+              INNER JOIN Personne P1 ON RP.Personne_Id = P1.ID
+              WHERE P1.ID = :id AND Relation_Id=P2.ID");
+
+
+
+
+        
+        $requete_prepare->execute(array("id" => $relationId));
+        $relationpersonne = $requete_prepare->fetchAll(PDO::FETCH_OBJ);
+        return $relationpersonne;
+    }
 
 
 
@@ -237,8 +275,8 @@ class Connexion
 
     }
 
-    public function insertPersonneMusiques($personneId, $MusiquesIds)
-    {
+    public function insertPersonneMusique($personneId, $MusiquesIds)
+    { 
 
 
         $requete_prepare = $this->connexion->prepare(
@@ -270,23 +308,16 @@ class Connexion
 
 
 
+    
+              
+
+    foreach ($_POST[personnes]as $personnes){
+       $applDB->insertPersonneRelation ($id,$personne,$_POST["personne"]);
+
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 }
 ?> 
